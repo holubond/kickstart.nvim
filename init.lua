@@ -289,6 +289,32 @@ require('lazy').setup({
     },
   },
 
+  -- Git integration via vim-fugitive. All commands are prefixed with :Git (or :G for short).
+  --
+  -- Opening the git summary:
+  --   :G          - open the status window (like `git status`)
+  --                 s = stage file/hunk, u = unstage, X = discard, = = toggle inline diff
+  --                 cc = commit, ca = commit --amend, cA = amend without editing message
+  --                 P = push, p = pull, F = fetch
+  --                 g? = show all keybindings for this window
+  --
+  -- Common commands:
+  --   :G diff     - diff of unstaged changes (use :G diff --staged for staged)
+  --   :G log      - commit log (navigate with j/k, <CR> to open commit)
+  --   :G blame    - open blame annotation in a sidebar
+  --   :G mergetool / :G difftool - resolve conflicts or review diffs in splits
+  --
+  -- Shorter built-in aliases for current file operations:
+  --   :Gdiffsplit - diff the current file against HEAD (or a specific commit)
+  --   :Gclog      - git log filtered to the current file (populate the quickfix list)
+  --   :Gread      - revert current file to HEAD (like `git checkout -- %`)
+  --   :Gwrite     - stage the current file (like `git add %`)
+  --   :GBrowse    - open current file/line on GitHub (requires vim-rhubarb for GitHub)
+  --
+  -- Note: shell shortcuts like `gcam` (git commit -am) are not part of fugitive.
+  --       Those come from git aliases or shell plugins (e.g. oh-my-zsh git plugin).
+  { 'tpope/vim-fugitive' },
+
   -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
   --
   -- This is often very useful to both group configuration, as well as handle
